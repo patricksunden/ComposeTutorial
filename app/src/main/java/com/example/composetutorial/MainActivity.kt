@@ -36,13 +36,26 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
+import androidx.compose.material3.TextField
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.Dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
             ComposeTutorialTheme {
-                Conversation(SampleData.conversationSample)
+
+            //Conversation(SampleData.conversationSample)
+            Navigation()
             }
         }
     }
@@ -52,10 +65,12 @@ data class Message(val author: String, val body: String)
 
 
 
+
 @Composable
 fun MessageCard(msg: Message) {
     // Add padding around our message
-    Row(modifier = Modifier.padding(all = 8.dp)){
+    Row(modifier = Modifier.padding(all = 8.dp
+    )){
         Image(
             painter = painterResource(R.drawable.bird),
             contentDescription = null,
@@ -90,7 +105,9 @@ fun MessageCard(msg: Message) {
             shadowElevation = 1.dp,
             // surfaceColor color will be changing gradually from primary to surface
             color = surfaceColor,
-            modifier = Modifier.animateContentSize().padding(1.dp)
+            modifier = Modifier
+                .animateContentSize()
+                .padding(1.dp)
         ) {
             Text(
                 text = msg.body,
@@ -137,6 +154,8 @@ fun PreviewConversation() {
         Conversation(SampleData.conversationSample)
     }
 }
+
+
 
 /**
  * SampleData for Jetpack Compose Tutorial
